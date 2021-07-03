@@ -13,7 +13,7 @@ def head():
 
 # Create a function named header which prints numbers from 1 to 10 one by one in `index.html` 
 # and assign to the route of ('/')
-app.route('/mohamed')
+@app.route('/mohamed')
 def header():
     names =['abbi','hiba','omer','mohamed','aicha']
     return render_template('body.html', object=names)
