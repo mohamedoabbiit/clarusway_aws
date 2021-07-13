@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: 2010-09-09 # cfn
+Description: |
+  this template will creat application load balancer with autoscaling group and lunch LogicalID:
+
+    
+Resources:
+  CallSecGroup: ##like parameter or is like variable 
+    Type: AWS::EC2::SecurityGroup # Configurqation
+     Properties: # here we just creat 
+       GroupDescription: enables SSH and HTTP ports # Required
+ParameterName:
+
+CallVPC:
+  Description: Seclect VPC for your application from the list
+  Type: AWS::EC2::VPC::Id
+      
+    SecurityGroupIngress:
+    - IpProtocol: tcp
+      FromPort: 22
+      ToPort: 22
+      CidrIp: 0.0.0.0/0
+    - IpProtocol: tcp
+      FromPort: 80
+      ToPort: 80
+      CidrIp: 0.0.0.0/0
+  VpcId: !Ref CallVPC
+
+
+  
+
+CallLoadBalancer:  # target 
+  Type: AWS::ElasticLoadBalancingV2::TargetGroup
+  Properties:
+    
+    HealthCheckIntervalSeconds: 25
+    HealthCheckTimeoutSeconds: 4
+    HealthyThresholdCount: 3
+    Port: 80
+    Protocol: HTTP
+    TargetType: instance
+    UnhealthyThresholdCount: 3
+    VpcId: !Ref CallVPC      
+
+  

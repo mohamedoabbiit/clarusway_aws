@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: 2010-09-09 #cfn to get 
+Description: > # to write paragraph with lines
+this cloudformatio teamplate was written for runing kitten carewsoul; on EC2. ki wbsite will be depl
+deplyed on amazon EC2 the security group will allow http connection port and http port
+from anywhre kitten caresoul static website is downled from public github
+then deplyed on appche web server.
+
+Resources:
+security
+  
+Transform:
+
+  
+Outputs:
